@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Carousel, Link } from 'react-bootstrap';
+import { Button, Card, Carousel } from 'react-bootstrap';
 import "./ProductCard.css"
 
 function ProductCard({ productItem }) {

@@ -7,32 +7,52 @@ import { useSelector, useDispatch } from "react-redux"
 function App() {
   const [list, setList] = useState([])
   const productList = useSelector(state =>state.productList)
+  const filterSizes = useSelector(state =>state.filterSizes)
   const sortedPrice = useSelector(state =>state.sortedPrice)
   const dispatch = useDispatch()
-  // console.log("productList", productList)
-  // console.log("list", list)
 
   
+  
+
+  const filterObjsInArr = () => {
+    const originalList =[...productList]
+    let filteredArray = [];
+    originalList.map((obj) => {
+      for (let key in obj.sizes) {
+        if (filterSizes.includes(obj.sizes[key]) && filteredArray.indexOf(obj) < 0) {
+          
+          filteredArray.push(obj);
+        };
+      };
+    })
+    setList(filteredArray)
+  }
+
+  useEffect(() =>{
+    filterObjsInArr()
+  
+  
+  }, [filterSizes])
  
   useEffect(() =>{
     let originalData = [...data]
     let sortedList;
-    if (sortedPrice=="inc"){
+    if (sortedPrice==="inc"){
       sortedList = originalData.sort(function(a, b){return parseInt(b.priceO)- parseInt(a.priceO)})
-      // dispatch({type:'SET_PRODUCT_LIST', payload:{productList:sortedList}})
+      dispatch({type:'SET_PRODUCT_LIST', payload:{productList:sortedList}})
       setList(sortedList)
-      console.log("increment",sortedList)
-  }else if(sortedPrice=="dec"){
+      
+  }else if(sortedPrice==="dec"){
       sortedList = originalData.sort(function(a, b){return parseInt(a.priceO)- parseInt(b.priceO)})
-      // dispatch({type:'SET_PRODUCT_LIST', payload:{productList:sortedList}})
+      dispatch({type:'SET_PRODUCT_LIST', payload:{productList:sortedList}})
       setList(sortedList)
-      console.log("decrement",sortedList)
-  }else if(sortedPrice=="all" || sortedPrice==""){
-      // dispatch({type:"SET_PRODUCT_LIST", payload:{productList:data}})
+      
+  }else if(sortedPrice==="all" || sortedPrice===""){
+      dispatch({type:"SET_PRODUCT_LIST", payload:{productList:data}})
       setList(data)
+      
   }
-  console.log(sortedPrice)
-  console.log(list)
+  
   },[sortedPrice])
 
   return (
