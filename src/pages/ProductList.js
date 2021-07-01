@@ -25,7 +25,7 @@ function App() {
         };
       };
     })
-    setList(filteredArray)
+    filteredArray.length>0  ? setList(filteredArray) : setList(originalList)
   }
 
   useEffect(() =>{
@@ -38,13 +38,14 @@ function App() {
     let originalData = [...data]
     let sortedList;
     if (sortedPrice==="inc"){
-      sortedList = originalData.sort(function(a, b){return parseInt(b.priceO)- parseInt(a.priceO)})
+      sortedList = originalData.sort(function(a, b){return parseInt(a.priceO)- parseInt(b.priceO)})
       dispatch({type:'SET_PRODUCT_LIST', payload:{productList:sortedList}})
+      
       setList(sortedList)
       
   }else if(sortedPrice==="dec"){
-      sortedList = originalData.sort(function(a, b){return parseInt(a.priceO)- parseInt(b.priceO)})
-      dispatch({type:'SET_PRODUCT_LIST', payload:{productList:sortedList}})
+    sortedList = originalData.sort(function(a, b){return parseInt(b.priceO)- parseInt(a.priceO)})
+    dispatch({type:'SET_PRODUCT_LIST', payload:{productList:sortedList}})
       setList(sortedList)
       
   }else if(sortedPrice==="all" || sortedPrice===""){

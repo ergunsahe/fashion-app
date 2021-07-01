@@ -24,8 +24,7 @@ function AppNavbar() {
         if (e.target.checked){
             
             dispatch({type:'SET_FILTER_LIST', payload:{filterSizes:value}})
-        }
-        else{
+        }else{
             let newFilterList = filterSizes.filter((item) =>{
               
                 return value !== item
