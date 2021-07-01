@@ -1,10 +1,11 @@
 import React from 'react'
 import { Button, Card, Carousel, Link } from 'react-bootstrap';
+import "./ProductCard.css"
 
 function ProductCard({ productItem }) {
     return (
-        <div style={{ backgroundColor: "blue" }}>
-            <Card style={{ width: '18rem' }}>
+        
+            <Card className="cardContainer" style={{ width: '18rem' }}>
                 <Carousel >
                     {
                         productItem.images.map((item, idex) => {
@@ -12,7 +13,7 @@ function ProductCard({ productItem }) {
                                 <Carousel.Item >
 
                                     <img
-                                        className="d-block w-100 "
+                                        className="d-block w-100 h-100"
                                         src={item}
                                         alt="First slide"
                                     />
@@ -25,7 +26,7 @@ function ProductCard({ productItem }) {
 
 
                 </Carousel>
-                <Card.Body>
+                <Card.Body className="cardBody">
                     <Card.Title>{productItem.brand}</Card.Title>
                     <Card.Text>
                         {productItem.description}
@@ -40,13 +41,26 @@ function ProductCard({ productItem }) {
                         :
                         null
                     }
-                    <Card.Text>
-                        {productItem.sizes}
-                    </Card.Text>
-                    <Button className="align-self-center" variant="info"><a href={productItem.url}>Go Details</a></Button>
+                    
+                    <div className="sizesContainer" >
+                    {productItem.sizes ?
+                        productItem.sizes.map((item, index) =>{
+                            return(
+                               
+                                    <Card.Text>{item}</Card.Text>
+                                
+                            )
+                        })
+
+                        :
+                        <Card.Text></Card.Text>
+                    }
+                    </div>
+                    
+                    <Button className="align-self-center linkContainer" variant="secondary"><Card.Link className="linkText" href={productItem.url} >Go Details</Card.Link></Button>
                 </Card.Body>
             </Card>
-        </div>
+        
     )
 }
 

@@ -1,0 +1,31 @@
+.cardContainer{
+    min-height: 40rem;
+    margin-top: 2rem;
+}
+.cardBody{
+    max-height: 1rem;
+}
+
+.sizesContainer{
+    display:flex; 
+    flex-direction:row; 
+    justify-content:space-around;
+    margin-bottom: 1rem;
+}
+
+
+
+.d-block{
+    max-height: 20rem;
+}
+
+
+.linkText{ 
+    color: white ; 
+    
+}
+
+.linkContainer{
+    align-self: center;
+    margin-left: 30%;
+}

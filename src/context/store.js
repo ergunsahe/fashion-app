@@ -1,4 +1,6 @@
+import {data} from "../helper/Data"
 export const initialValue = {
     productList:[],
-    deneme:"deneme"
+    sortedPrice:""
+   
   };
