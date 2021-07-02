@@ -1,66 +1,74 @@
-import React from 'react'
-import { Button, Card, Carousel } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react'
+import { Button, Card, Carousel, Row, Col } from 'react-bootstrap';
 import "./ProductCard.css"
 
 function ProductCard({ productItem }) {
+    const [windowWidth, setWindowView] = useState(750)
+
+
+    useEffect(() => {
+
+        setWindowView(window.innerWidth)
+
+    }, [])
+
     return (
-        
-            <Card className="cardContainer" style={{ width: '18rem' }}>
-                <Carousel >
-                    {
-                        productItem.images.map((item, idex) => {
-                            return (
-                                <Carousel.Item >
 
-                                    <img
-                                        className="d-block w-100 h-100"
-                                        src={item}
-                                        alt="First slide"
-                                    />
+        <Card className="cardContainer">
 
-                                </Carousel.Item>
-                            )
-                        })
-                    }
+            <Carousel className="imageContainer"  prevIcon={false} nextIcon={false}>
+                {
+                    productItem.images.map((item, index) => {
+                        return (
+                            <Carousel.Item key={index}>
 
+                                <img
+                                    className="image"
+                                    src={item}
+                                    alt="First slide"
+                                />
 
+                            </Carousel.Item>
+                        )
+                    })
+                }
+            </Carousel>
 
-                </Carousel>
-                <Card.Body className="cardBody">
-                    <Card.Title>{productItem.brand}</Card.Title>
-                    <Card.Text>
+            <Card.Body className="cardBody">
+
+                <Card.Title className="cardTitle">{productItem.brand}</Card.Title>
+                <div className="cardDescContainer" >
+                    <Card.Text className="cardText">
                         {productItem.description}
                     </Card.Text>
-                    <Card.Text>
-                        {productItem.priceO}
-                    </Card.Text>
-                    {productItem.priceR ?
-                        <Card.Text>
-                            {productItem.priceR}
-                        </Card.Text>
-                        :
-                        null
-                    }
-                    
-                    <div className="sizesContainer" >
+
+                </div>
+
+                <Card.Text className="cardPrice">
+                    Price: {productItem.priceO}€
+                </Card.Text>
+
+                <Card.Text className="cardSizes">Sizes:</Card.Text>
+                <div className="sizesContainer"  >
                     {productItem.sizes ?
-                        productItem.sizes.map((item, index) =>{
-                            return(
-                               
-                                    <Card.Text>{item}</Card.Text>
-                                
+                        productItem.sizes.map((item, index) => {
+                            return (
+
+                                <Card.Text className="cardSizes">{item}</Card.Text>
+
                             )
                         })
 
                         :
                         <Card.Text></Card.Text>
                     }
-                    </div>
-                    
-                    <Button className="align-self-center linkContainer" variant="secondary"><Card.Link className="linkText" href={productItem.url} >Go Details</Card.Link></Button>
-                </Card.Body>
-            </Card>
-        
+                </div>
+
+                <Button className="align-self-center linkContainer" variant="secondary"><Card.Link className="linkText" href={productItem.url} >Go Details</Card.Link></Button>
+            </Card.Body>
+
+        </Card>
+
     )
 }
 

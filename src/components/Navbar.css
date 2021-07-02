@@ -1,3 +1,18 @@
-.filterContainer{
-    margin-left: 5rem;
+
+.filterSortContainer{
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+
+.checkboxItem{
+    margin: 0.3rem;
+}
+
+@media  (max-width: 568px){
+    
+    .checkboxItem{
+        margin: 0.2rem;
+    }
 }
