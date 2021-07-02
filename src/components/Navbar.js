@@ -7,7 +7,6 @@ import "./Navbar.css"
 function AppNavbar() {
     const [sizeList, setSizeList] = useState([])
     const [windowWidth, setWindowView] = useState(750)
-    console.log("🚀 ~ file: Navbar.js ~ line 10 ~ AppNavbar ~ windowWidth", windowWidth)
     const filterSizes = useSelector(state => state.filterSizes)
     const dispatch = useDispatch()
 
