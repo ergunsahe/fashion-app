@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Card, Carousel, Row, Col } from 'react-bootstrap';
+import React from 'react'
+import { Button, Card, Carousel } from 'react-bootstrap';
 import "./ProductCard.css"
 
 function ProductCard({ productItem }) {
-    const [windowWidth, setWindowView] = useState(750)
-
-
-    useEffect(() => {
-
-        setWindowView(window.innerWidth)
-
-    }, [])
+    
 
     return (
 

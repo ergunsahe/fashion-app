@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard"
 // import {fetchData} from "../helper/FetchData"
 import { data } from "../helper/Data"
 import { useSelector, useDispatch } from "react-redux"
-import {CardDeck} from "react-bootstrap"
+
 
 function App() {
   const [list, setList] = useState([])

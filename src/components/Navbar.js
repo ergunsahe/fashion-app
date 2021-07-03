@@ -73,6 +73,7 @@ function AppNavbar() {
                                 sizeList?.map((item, index) => {
                                     return (
                                         <Form.Check
+                                            key={index}
                                             type={'checkbox'}
                                             id={item}
                                             label={item}
