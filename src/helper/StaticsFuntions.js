@@ -77,10 +77,6 @@ export const onLowestAverage = (data) => {
         }
         
         lastUniqueAverage.push(newObj)
-
-        
-
-       
     }
     
     let minAvrg = 0
@@ -94,14 +90,11 @@ export const onLowestAverage = (data) => {
         }else if (minAvrg > Object.values(lastUniqueAverage[i]) ){
             minAvrg = Object.values(lastUniqueAverage[i])[0]
             minBrand= Object.keys(lastUniqueAverage[i])[0]
-            
-            
+  
         }else {
-            minAvrg = minAvrg
-            
+            minAvrg = minAvrg   
         }
     }
     // console.log(minBrand, minAvrg)
-    return [minBrand, minAvrg]
-    
+    return [minBrand, minAvrg] 
 }
